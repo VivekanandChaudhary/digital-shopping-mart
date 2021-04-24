@@ -1,0 +1,116 @@
+
+{% extends 'comman.html' %}
+{% load static %}
+
+
+{% block contain %}
+    {% include 'admin_menu.html' %}
+
+    <style>
+      .product_info
+      {
+          padding: 10px;
+          background-color: red;
+      }
+      #pt
+      {
+          background-color:chartreuse;
+      }
+      .product_info_title
+      {
+          padding: 5px;
+          width: 100px;
+          background-color: chartreuse;
+          color: blueviolet;
+          font-family: "Arial Black";
+
+      }
+      .product_info_details
+      {
+          color: wheat;
+      }
+
+    </style>
+    <form action="{% url 'save_product' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center" border="0">
+         <tr><th id="pt">Add Product</th></tr>
+         <tr><th class="product_info"><input type="text" placeholder="Name" required name="p1"></th></tr>
+         <tr><th class="product_info"><input type="number" placeholder="Price" required name="p2" min="1"></th></tr>
+         <tr><th class="product_info"><input type="number" placeholder="Quantity" required name="p3" min="1"></th></tr>
+         <tr><th class="product_info">Photo : <input type="file" name="p4" required></th></tr>
+         <tr><th class="product_info"><button type="submit">Save</button> </th></tr>
+
+    </table>
+    </form>
+
+
+    <table align="center" border="0">
+    <tr>
+        <th class="product_info_title">No</th>
+        <th class="product_info_title">Name</th>
+        <th class="product_info_title">Price</th>
+        <th class="product_info_title">Quantity</th>
+        <th class="product_info_title">Image</th>
+        <th class="product_info_title">Update</th>
+        <th class="product_info_title">Delete</th>
+        <th class="product_info_title">Status</th>
+
+    </tr>
+
+
+
+    {% for x in page %}
+        <tr>
+            <th class="product_info_details">{{ x.no }}</th>
+            <th class="product_info_details">{{ x.name }}</th>
+            <th class="product_info_details">{{ x.price }}</th>
+            <th class="product_info_details">{{ x.quantity }}</th>
+            <th class="product_info_details">
+                <img src="{{ x.photo.url }}" width="50" height="50">
+            </th>
+            <th class="product_info_details">{{ x.update }}</th>
+
+
+
+            <th class="product_info_details">
+                <a href="{% url 'delete_product_info' %}?no={{ x.no }}">
+                    <img src="{% static 'images/delete.png' %}" width="20" height="20">
+                </a>
+            </th>
+            <th class="product_info_details">{{ x.status }}</th>
+
+        </tr>
+    {% endfor %}
+    <tr>
+        <th colspan="8">
+            {% if page.has_previous %}
+
+                <a href="{% url 'admin_view_products' %}?page_no={{ page.previous_page_number }}">
+                    PRIVIOUS
+                </a>
+
+            {% endif %}
+
+            {% for x in page.paginator.page_range %}
+
+                <span style="padding-left: 10px; padding-right: 10px">
+                   <a href="{% url 'admin_view_products' %}?page_no={{ x }}">
+                    {{ x }}
+                   </a>
+                </span>
+
+            {% endfor %}
+
+            {% if page.has_next %}
+
+
+                <a href="{% url 'admin_view_products' %}?page_no={{ page.next_page_number }}">
+                    NEXT
+                </a>
+
+            {% endif %}
+        </th>
+    </tr>
+    </table>
+{% endblock %}

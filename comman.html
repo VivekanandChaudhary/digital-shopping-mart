@@ -1,0 +1,59 @@
+{% load static %}
+<html>
+    <head>
+
+        <title>Vivek Shopping Mart</title>
+
+        <style>
+            body{
+                background-color: blue;
+            }
+            #title
+            {
+                font-family: Agency FB;
+                padding:10px;
+                font-size: 80px;
+                color: red;
+            }
+            #icon
+            {
+                width: 200px;
+                height: 150px;
+                border-style: solid;
+                border-color: red;
+
+            }
+            #copyright
+            {
+                background-color: yellow;
+                color: red;
+                font-family: Arial;
+                border-color: wheat;
+
+            }
+        </style>
+    </head>
+    <body>
+        <table align="center" border="0">
+            <tr>
+                <th>
+                    <img id="icon" src="{% static 'images/shoppingmart.png ' %}">
+                </th>
+                <th id="title">Digital Shopping Mart</th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    {% block contain %}
+
+                    {% endblock %}
+                </th>
+            </tr>
+            <tr>
+                <th id="copyright" colspan="2">
+                   copyright @ project by Vivekanand Chaudhary
+                </th>
+            </tr>
+
+        </table>
+    </body>
+</html>

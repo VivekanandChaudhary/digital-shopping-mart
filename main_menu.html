@@ -1,0 +1,63 @@
+{% load static %}
+<style>
+    .mm:hover{
+        background-color: red;
+        color: maroon;
+    }
+    .mm
+    {
+        text-align: center;
+        font-family: "Agency FB";
+        font-size: 30px;
+        width: 250px;
+        color:wheat;
+    }
+    a:link{
+        text-decoration: none;
+    }
+    a:visited{
+        text-decoration: none;
+        color: wheat;
+    }
+    #mar
+    {
+        color: blue;
+        background-color: wheat;
+        font-family: "Agency FB";
+
+    }
+
+
+</style>
+<body>
+<marquee id="mar">Vivekanand Chaudhary Project</marquee>
+</body>
+<table align="center" border="0">
+      <tr>
+          <th class="mm">
+              <a href="{% url 'main' %}">
+                 Home
+              </a>
+          <th class="mm">
+              <a href="{% url 'admin_login' %}">
+                 Admin
+              </a>
+          </th>
+          <th class="mm">
+
+                  Register
+
+          </th>
+          <th class="mm">
+
+                 <img src="{%static 'images/trolly.png' %}" width="30" height="30">
+                 Cart Items:0
+
+          </th>
+          <th class="mm">
+              <a href="#">
+                  Login
+              </a>
+          </th>
+      </tr>
+</table>

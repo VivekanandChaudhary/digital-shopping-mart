@@ -1,0 +1,32 @@
+{% extends 'comman.html' %}
+
+
+
+{% block contain %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <style>
+    .admin_info{
+        font-family: "Agency FB";
+        font-size: 15px;
+        color: wheat;
+        width: 250px;
+    }
+
+
+    </style>
+
+
+    <table align="center" border="0">
+          <tr style="background-color: maroon"><th colspan="2" >Welcome Vivek kamar</th></tr>
+          <tr>
+              <th rowspan="5"><img src="{% static 'images/vivek2.png.jpg' %}" ></th>
+          </tr>
+
+          <tr><th class="admin_info">Name: Mr Vivek Kumar</th></tr>
+          <tr><th class="admin_info">Contact no: 9308483144</th></tr>
+          <tr><th class="admin_info">Email: vc3011998@gmail.com</th></tr>
+          <tr><th class="admin_info">Address: Nalanda(bihar)</th></tr>
+
+    </table>
+{% endblock %}
